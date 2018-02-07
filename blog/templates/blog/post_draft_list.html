@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {{ block.super }}
+    {% for post in posts %}
+        <div>
+            <p>created: {{ post.created_date|date:'y-m-d' }}</p>
+            <h1><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a><a href="{% url 'blog:post_remove' pk=post.pk %}}">[삭제]</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+
+    {% endfor %}
+{% endblock %}
