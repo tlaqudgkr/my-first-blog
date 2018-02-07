@@ -5,7 +5,15 @@
     <title>나의 블로그</title>
 </head>
 <body>
-    <p>하이!</p>
-    <p>잘 작동합니다.</p>
+    <div>
+        <h1><a href="/">나의 블로그</a></h1>
+    </div>
+    {% for post in posts %}
+        <div>
+            <p>published: {{ post.published_date }}</p>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
 </body>
 </html>
