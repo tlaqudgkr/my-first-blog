@@ -1,0 +1,151 @@
+@charset "utf-8"; 
+
+
+/*       초기화       */
+.clearfix {
+	*zoom: 1;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+h1 {
+	margin: 0;
+}
+/*     base     */
+
+body {
+	text-align: justify;
+}
+a {
+	color: #464646;
+	text-decoration: none;
+}
+.wrap {
+	width: 980px;
+	margin: auto;
+}
+.bg {
+	background-color: black;
+	/*position: relative;*/
+}
+h1 {
+	text-align: center;
+	padding: 20px 0 20px 0;
+	font-size: 35px;
+	/*color: red;*/
+}
+.aa {
+	margin-top: 0;
+	font-size: 40px;
+	margin-bottom: 40px;
+}
+.aa a {
+	color: #fff;
+}
+.mid {
+	position: relative;
+}
+.mid h2 {
+	color: blue;
+	font-size: 20px;
+}
+nav.flo {
+	position: absolute;
+	top: 0px;
+	right: 0;
+	font-size: 20px;
+}
+p.log {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 30px;
+}
+
+
+
+@media all and (max-width: 600px) {
+
+body {
+	font-size:
+}
+
+
+
+}
+
+
+
+
+/*  list  */
+.mid2 {
+	/*margin-top: 70px;*/
+	/*position: relative;*/
+}
+.mid2 p.pub {
+	font-size: 20px;
+}
+p.comm {
+	font-size: 20px;
+}
+p.text {
+	color: #525252;
+	font-size: 20px;
+}
+p.del {
+	font-size: 20px;
+/*	position: absolute;
+	top: 10px;
+	right: 0px;*/
+}
+p.del a {
+	color: red;
+}
+
+
+/*     edit      */
+
+h1.a1 {
+	text-align: left;
+	color: #535353;
+}
+form.for p input {
+	width: 100%;
+}
+form.for p label {
+	font-size: 20px;
+}
+form.for p {
+	color: #3592cd;
+}
+form.for p textarea {
+	width: 100%;
+}
+button.but1 {
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 20px;
+}
+
+
+/*     draft      */
+
+.mid3 {
+	position: relative;
+}
+p.del2 {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	font-size: 20px;
+}
+p.del2 a {
+	color: red;
+}
+p.creat {
+	font-size: 20px;
+}
