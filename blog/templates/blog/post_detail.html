@@ -16,12 +16,20 @@
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 <hr>
+<a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">[댓글달기]</a>
 {% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
     <div>
         <p>{{  comment.created_date  }}</p>
+        {% if not comment.approved_comment %}
+        <a href="{% url 'blog:comment_approve' pk=comment.pk %}">등록</a>
+        <a href="{% url 'blog:comment_remove' pk=comment.pk %}">삭제</a>
+
+        {% endif %}
         <p>{{  comment.author  }}</p>
         <p>{{  comment.text|linebreaks  }}</p>
     </div>
+    {% endif %}
 {% empty %}
     <p>NO comments here yet. (첫번째 댓글의 주인공은 누구?)</p>
 {% endfor %}
