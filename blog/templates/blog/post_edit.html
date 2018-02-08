@@ -1,11 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h1 class="a1">새글쓰기</h1>
-<form class="for" action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="but1" type="submit">저장</button>
-</form>
+<div class="wrap clearfix">
+	<h1 class="a1">새글쓰기</h1>
+	<form class="for" action="" method="POST">
+	    {% csrf_token %}
+	    {{ form.as_p }}
+	    <button class="but1" type="submit">저장</button>
+	</form>
+</div>
 
 {% endblock %}

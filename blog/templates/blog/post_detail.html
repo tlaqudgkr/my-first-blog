@@ -1,36 +1,41 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-<nav><a href="{% url 'blog:post_edit' pk=post.pk %}">수정하기</a></nav>
-<a href="{% url 'blog:post_remove' pk=post.pk %}">삭제하기</a>
-{% endif %}
-<div>
-    {% if post.published_date %}
+<div class="wrap">
+    <nav class="n1">
+        <a href="{% url 'blog:post_edit' pk=post.pk %}" class="re2">수정하기</a>
+        <a href="{% url 'blog:post_remove' pk=post.pk %}" class="red">삭제하기</a>
+    </nav>
+    {% endif %}
+    <div>
+        {% if post.published_date %}
         <div>
             {{ post.published_date }}
         </div>
-    {% else %}
-        <a href="{% url 'blog:post_publish' pk=post.pk %}">배포하기</a>
-    {% endif %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.text|linebreaksbr }}</p>
-</div>
-<hr>
-<a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">[댓글달기]</a>
-{% for comment in post.comments.all %}
-    {% if user.is_authenticated or comment.approved_comment %}
-    <div>
-        <p>{{  comment.created_date  }}</p>
-        {% if not comment.approved_comment %}
-        <a href="{% url 'blog:comment_approve' pk=comment.pk %}">등록</a>
-        <a href="{% url 'blog:comment_remove' pk=comment.pk %}">삭제</a>
-
+        {% else %}
+            <a href="{% url 'blog:post_publish' pk=post.pk %}" class="n1 n_2">배포하기</a>
         {% endif %}
-        <p>{{  comment.author  }}</p>
-        <p>{{  comment.text|linebreaks  }}</p>
+        <h1 class="a_2"><a href="#">{{ post.title }}</a></h1>
+        <p class="text">{{ post.text|linebreaksbr }}</p>
     </div>
-    {% endif %}
-{% empty %}
-    <p>NO comments here yet. (첫번째 댓글의 주인공은 누구?)</p>
-{% endfor %}
-{% endblock %}
+    
+    <hr>
+    <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}" class="dd">[댓글달기]</a>
+    <p>{% for comment in post.comments.all %}</p>
+        {% if user.is_authenticated or comment.approved_comment %}
+        <div class="d_1">
+            <p>{{  comment.created_date  }}</p>
+            {% if not comment.approved_comment %}
+            <a href="{% url 'blog:comment_approve' pk=comment.pk %}">등록</a>
+            <a href="{% url 'blog:comment_remove' pk=comment.pk %}">삭제</a>
+
+            {% endif %}
+            <p class="p_4">{{  comment.author  }}</p>
+            <p class="p_4">{{  comment.text|linebreaks  }}</p>
+        </div>
+        {% endif %}
+    {% empty %}
+        <p>NO comments here yet. (첫번째 댓글의 주인공은 누구?)</p>
+    {% endfor %}
+    {% endblock %}
+</div>

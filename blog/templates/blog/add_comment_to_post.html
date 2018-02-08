@@ -2,11 +2,13 @@
 
 
 {% block content %}
-    <h1>댓글작성</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">작성</button>
+<div class="wrap">
+	<h1 class="a1">댓글작성</h1>
+	<form class="for" method="POST">
+	    {% csrf_token %}
+	    {{ form.as_p }}
+    <button class="but1" type="submit">작성</button>
 </form>
+</div>
 
 {% endblock %}
