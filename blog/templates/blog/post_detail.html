@@ -15,4 +15,14 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
+<hr>
+{% for comment in post.comments.all %}
+    <div>
+        <p>{{  comment.created_date  }}</p>
+        <p>{{  comment.author  }}</p>
+        <p>{{  comment.text|linebreaks  }}</p>
+    </div>
+{% empty %}
+    <p>NO comments here yet. (첫번째 댓글의 주인공은 누구?)</p>
+{% endfor %}
 {% endblock %}
