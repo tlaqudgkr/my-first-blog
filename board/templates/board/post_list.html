@@ -1,0 +1,12 @@
+{% extends 'board/base.html' %}
+{% block content %}
+{{ block.super }}
+    {% for b in boards %}
+<ul>
+    <li>번호: {{ b.id }}
+    <a href="{% url 'board:post_detail' pk=b.pk %}">제목: {{ b.title }}</a>
+    {{ b.author.first_name }}
+    {{ b.created_date }}</li>
+</ul>
+    {% endfor %}
+{% endblock %}

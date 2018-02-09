@@ -30,7 +30,7 @@
             <a href="{% url 'blog:comment_remove' pk=comment.pk %}">삭제</a>
 
             {% endif %}
-            <p class="p_4">{{  comment.author  }}</p>
+            <p class="p_4">ID: {{  comment.author  }}</p>
             <p class="p_4">{{  comment.text|linebreaks  }}</p>
         </div>
         {% endif %}

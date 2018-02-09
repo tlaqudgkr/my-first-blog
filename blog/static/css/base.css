@@ -16,6 +16,7 @@ p {
 h1 {
 	margin: 0;
 }
+
 /*     base     */
 
 body {
@@ -59,7 +60,7 @@ nav.flo {
 	position: absolute;
 	top: 0px;
 	right: 0;
-	font-size: 20px;
+	font-size: 25px;
 }
 .flo a.soil {
 	border-left: 1px solid #000;
@@ -74,7 +75,9 @@ p.log {
 	right: 0;
 	margin-top: 30px;
 }
-
+p.log2 {
+	font-size: 25px;
+}
 
 
 @media all and (max-width: 600px) {

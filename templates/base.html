@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}시작{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+{% block blog %}
+{% endblock %}
+
+{% block board %}
+{% endblock %}
+
+{% block home %}
+{% endblock %}
+
+</body>
+</html>
