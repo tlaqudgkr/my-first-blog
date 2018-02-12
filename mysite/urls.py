@@ -19,6 +19,8 @@ from django.contrib.auth import views
 
 from .views import home
 
+from mysite.views import Home, UserRegister, UserRegisterDone
+
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^blog/', include('blog.urls', namespace='blog')),
@@ -26,4 +28,8 @@ urlpatterns = [
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page':'/'}),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', Home.as_view(), name='home'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^acounts/register/$', UserRegister.as_view(), name='register'),
+    url(r'^ accounts/register/done$', UserRegisterDone.as_view(), name='register_done'),
 ]
