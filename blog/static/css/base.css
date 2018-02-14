@@ -78,16 +78,30 @@ p.log {
 p.log2 {
 	font-size: 25px;
 }
+.ul_1 {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	margin-top: 50px;
+}
+.ul_1 li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	border-left: 1px solid #ccc;
+	font-size: 1.5em;
 
-
-@media all and (max-width: 600px) {
-
-body {
-	font-size:
+}
+.ul_1 li:first-child {
+	border-left: none; 
 }
 
-
-
+.ul_1 li a {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.ul_1 li:first-child a {
+	margin-left: 0;
 }
 
 
@@ -122,6 +136,8 @@ p.del {
 p.del a {
 	color: red;
 }
+
+
 
 
 /*     edit      */
@@ -212,4 +228,19 @@ hr {
 
 
 /*        add_comment       */
+
+
+
+
+
+
+@media all and (max-width: 600px) {
+
+body {
+	font-size:
+}
+
+
+
+}
 

@@ -1,12 +1,22 @@
 
 {% extends 'board/base.html' %}
 {% block content %}
-<div>
+<div class="wrap">
     <div>
         <p>{{ post.author.first_name }}</p>
         <p>{{ post.created_date }}</p>
     </div>
-    <h1><a href="#">{{ post.title }}</a></h1>
-    <p>{{ post.text|linebreaksbr }}</p>
+    <h1 class="a_2"><a href="#">{{ post.title }}</a></h1>
+    {% if post.category == None %}
+        <p>게시판: {{ post.category }}</p>
+    {% else %}
+        <p>게시판: <a href="/board/{{ post.category }}/">{{ post.category }}</a></p>
+    {% endif %}
+
+    <p class="text">{{ post.text|linebreaksbr }}</p>
+
+    {% for file in file %}
+        <p><a href="{{ file }}">{{ file }}</a></p>
+    {% endfor %}
 </div>
 {% endblock %}

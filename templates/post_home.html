@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 
-{% block home %}
-<div class="bg clearfix">
-    <div class="wrap">
-        <h1 class="aa"><a href="{% url 'board:post_list' %}">병학이의 게시물</a></h1>
-    </div>
-</div>
 
-<ol><a href="blog/"> blog</a>
+{% block title %}
+<h1 class="aa"><a href="{% url 'board:post_list' %}">B.H의 게시물</a></h1>
+{% endblock%}
+
+{% block home %}
+
+
+<ol><a href="{% url 'blog:post_list' %}">blog</a>
 {% for posts in post %}
     <li><a href="{% url 'blog:post_detail' pk=posts.pk %}">{{ posts }}</a> {{ posts.created_date }}</li>
 {% endfor %}
 </ol>
 
 
-<ol><a href="blog/"> board</a>
+<ol><a href="{% url 'board:post_list' %}">board</a>
 {% for boards in board %}
     <li><a href="{% url 'board:post_detail' pk=boards.pk %}">제목: {{ boards }}</a> {{ boards.created_date }}</li>
 {% endfor %}
 </ol>
 
-{% block content %}
-<h1>환영합니다.</h1>
 {% endblock %}
 
-{% endblock %}
+
+

@@ -1,12 +1,13 @@
 {% extends 'board/base.html' %}
 
 {% block content %}
-<div>
-	<h1>새글쓰기</h1>
-	<form action="" method="POST">
+<div class="wrap clearfix">
+	<h1 class="a1">새글쓰기</h1>
+	<form class="for" action="" method="POST" enctype="multipart/form-data">
 	    {% csrf_token %}
 	    {{ form.as_p }}
-	    <button type="submit">저장</button>
+		{{ file.as_p }}
+	    <button class="but1" type="submit">저장</button>
 	</form>
 </div>
 {% endblock %}

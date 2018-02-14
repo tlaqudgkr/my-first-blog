@@ -1,25 +1,31 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <h1 class="aa"><a href="{% url 'board:post_list' %}">심병학의 게시판</a></h1>
+{% endblock %}
 
 {% block board %}
-<div class="bg clearfix">
-    <div class="wrap">
-        <h1 class="aa"><a href="{% url 'board:post_list' %}">병학이의 게시판</a></h1>
-    </div>
-</div>
     <div class=" mid wrap clearfix">
         {% if user.is_authenticated %}
         <div class="mid">
             <h2>안녕하세요. '{{user.first_name}}'님</h2>
         </div>
+        <ul class="ul_1">
+            <li><a href="{% url 'board:post_list' %}">전체보기</a></li>
+            {% for cat in cat %}
+            <li><a href="{% url 'board:post_list' %}?category={{ cat }}">{{ cat.title }}</a></li>
+            {% endfor %}
+            <li><a href="{% url 'board:post_new' %}">새글쓰기</a></li>
+        </ul>
         <nav class="flo">
             <p class="log"><a href="{% url 'logout' %}">로그아웃</a></p>
             <a href="" class="soil2">초안목록보기</a>
-            <a href="{% url 'board:post_new' %}" class="soil">새글쓰기</a>
+            <a href="{% url 'board:post_new' %}" class="soil">글작성하기</a>
         </nav>
         {% else %}
             <p class="log log2"><a href="{% url 'login' %}">로그인</a></p>
         {% endif %}
+
     </div>
 
         {% block content %}

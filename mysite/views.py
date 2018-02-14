@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 def home(request):
     posts = Post.objects.order_by('-created_date')[:5]
     boards = Board.objects.order_by('-created_date')[:5]
-    return render(request, 'post_home.html', {'post':posts, 'board':boards})
+    return render(request, 'post_home.html', {'post': posts, 'board': boards})
 
 class Home(TemplateView):
     template_name = 'home.html'
