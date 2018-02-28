@@ -18,7 +18,12 @@
         <h1 class="a_2"><a href="#">{{ post.title }}</a></h1>
         <p class="text">{{ post.text|linebreaksbr }}</p>
     </div>
-    
+    <div>
+        <p class="tagdetail">태그 : {% for tag in post.tags.all %}
+            <a href="{% url 'taglistview' tag %}">{{ tag }}</a>,
+            {% endfor %}
+        </p>
+    </div>
     <hr>
     <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}" class="dd">[댓글달기]</a>
     <p>{% for comment in post.comments.all %}</p>
@@ -37,5 +42,6 @@
     {% empty %}
         <p>NO comments here yet. (첫번째 댓글의 주인공은 누구?)</p>
     {% endfor %}
-    {% endblock %}
+
 </div>
+{% endblock %}

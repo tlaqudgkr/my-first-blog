@@ -1,6 +1,10 @@
 from django.db import models
 
 from django.utils import timezone
+
+from django.db import models
+
+import os
 # Create your models here.
 
 class Category(models.Model):
@@ -28,9 +32,28 @@ class File(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Board, null=True, on_delete=models.CASCADE)
 
+    def filename(self):
+        return os.path.basename(self.file.name)
+
     def delete(self, *args, **kwargs):
         self.file.delete()
         super(File,self).delete(*args, **kwargs)
 
     def __str__(self):
         return self.file.name
+
+
+class Image(models.Model):
+    image = models.FileField(upload_to='images/%Y/%m/%d/', null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Board, null=True, on_delete=models.CASCADE)
+
+    def filename(self):
+        return os.path.basename(self.image.name)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super(File,self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.image.name

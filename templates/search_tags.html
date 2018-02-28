@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}태그검색: {{ tags }}{% endblock%}
+
+{% block home %}
+
+<ul>
+    {% for post in object_list %}
+        <li>{{ post }}</li>
+    {% empty %}
+        <li>'{{ tags }}'에 대한 검색결과가 없습니다.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

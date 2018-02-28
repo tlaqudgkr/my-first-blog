@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from board.models import Board, Category, File
-from board.forms import BoardForm, FileForm
+from board.models import Board, Category, File, Image
+from board.forms import BoardForm, FileForm, ImageForm
 
 from django.shortcuts import redirect, get_object_or_404
 # Create your views here.
@@ -38,8 +38,9 @@ def post_list(request):
 def post_detail(request, pk):
     cat = Category.objects.all()
     post = get_object_or_404(Board, pk=pk)
-    file = post.file_set.all()
-    return render(request,'board/post_detail.html', {'post': post, 'cat':cat, 'file':file})
+    files = post.file_set.all()
+    images = post.image_set.all()
+    return render(request,'board/post_detail.html', {'post': post, 'cat':cat, 'files':files, 'images': images})
 
 
 def post_new(request):
@@ -59,11 +60,19 @@ def post_new(request):
                 file.post = post
                 file.save()
 
+            upimgs = request.FILES.getlist('image')
+            for upimg in upimgs:
+                img = Image()
+                img.image = upimg
+                img.post = post
+                img.save()
+
             return redirect('board:post_detail', pk=post.pk)
     else:
         form = BoardForm()
         file = FileForm()
-    return render(request, 'board/post_edit.html', {'form': form, 'cat':cat, 'file': file})
+        image = ImageForm()
+    return render(request, 'board/post_edit.html', {'form': form, 'cat':cat, 'file': file, 'image': image})
 
 
 def post_edit(request,pk):

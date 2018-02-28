@@ -1,17 +1,32 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     {{ block.super }}
-    {% for post in posts %}
-        <div class="mid2 wrap">
-            <h1 class="a_2"><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p class="comm">&nbsp;Comments:{{ post.approved_comments.count }}</p>
-                
-                &nbsp;{% if user.is_authenticated %}
-                <p class="del"><a href="{% url 'blog:post_remove' pk=post.pk %}">[삭제]</a></p>
-                {% endif %}
-            <p class="text">{{ post.text|linebreaksbr }}</p>
-            <p class="pub">published: {{ post.published_date }}</p>
-        </div>
+    {% for contact in contacts %}
+<div class="mid2 wrap">
+    <h1 class="a_2"><a href="{% url 'blog:post_detail' pk=contact.pk %}">{{ contact.title }}</a></h1>
+        <p class="comm">&nbsp;Comments:{{ contact.approved_comments.count }}</p>
 
-    {% endfor %}
+        &nbsp;{% if user.is_authenticated %}
+        <p class="del"><a href="{% url 'blog:post_remove' pk=contact.pk %}">[삭제]</a></p>
+        {% endif %}
+    <p class="text">{{ contact.text|linebreaksbr }}</p>
+    <p class="pub">published: {{ contact.published_date }}</p>
+
+{% endfor %}
+    <div class="pagenext">
+        <span>
+            {% if contacts.has_previous %}
+                <a href="?page={{ contacts.previous_page_number }}">이전</a>
+            {% endif %}
+
+            <span>
+                Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+            </span>
+
+            {% if contacts.has_next %}
+                <a href="?page={{ contacts.next_page_number }}">다음</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
 {% endblock %}

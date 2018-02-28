@@ -1,27 +1,36 @@
 {% extends 'base.html' %}
 
 
-{% block title %}
-<h1 class="aa"><a href="{% url 'board:post_list' %}">B.H의 게시물</a></h1>
-{% endblock%}
+    {% block title %}
+    <h1 class="aa"><a href="{% url 'board:post_list' %}">B.H의 모든 것</a></h1>
+    {% endblock%}
 
-{% block home %}
+    {% block home %}
+
+<div class="wrap">
+    <hr>
+    <ol><a href="{% url 'blog:post_list' %}">blog</a>
+    {% for posts in post %}
+        <li><a href="{% url 'blog:post_detail' pk=posts.pk %}">{{ posts }}</a> {{ posts.created_date }}</li>
+    {% endfor %}
+    </ol>
+
+    <hr>
+    <ol><a href="{% url 'board:post_list' %}">board</a>
+    {% for boards in board %}
+        <li><a href="{% url 'board:post_detail' pk=boards.pk %}">제목: {{ boards }}</a> {{ boards.created_date }}</li>
+    {% endfor %}
+    </ol>
+
+    <hr>
+    <p>Tag 최신</p>
+        {% for tag in tags %}
+            <a href="{% url 'taglistview' tag %}">{{ tag.name }}</a>,
+        {% endfor %}
+    <hr>
+    {% endblock %}
 
 
-<ol><a href="{% url 'blog:post_list' %}">blog</a>
-{% for posts in post %}
-    <li><a href="{% url 'blog:post_detail' pk=posts.pk %}">{{ posts }}</a> {{ posts.created_date }}</li>
-{% endfor %}
-</ol>
-
-
-<ol><a href="{% url 'board:post_list' %}">board</a>
-{% for boards in board %}
-    <li><a href="{% url 'board:post_detail' pk=boards.pk %}">제목: {{ boards }}</a> {{ boards.created_date }}</li>
-{% endfor %}
-</ol>
-
-{% endblock %}
-
+</div>
 
 

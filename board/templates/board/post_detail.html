@@ -1,5 +1,6 @@
 
 {% extends 'board/base.html' %}
+{% load static %}
 {% block content %}
 <div class="wrap">
     <div>
@@ -15,8 +16,13 @@
 
     <p class="text">{{ post.text|linebreaksbr }}</p>
 
-    {% for file in file %}
-        <p><a href="{{ file }}">{{ file }}</a></p>
-    {% endfor %}
+    <p>{% for image in images %} <!-- 이미지 첨부하는 방법 -->
+        <img src="{% get_media_prefix %}{{ image }}" alt="{{ image.filename }}">
+    {% endfor %}</p>
+
+    <p>{% for file in files %} <!-- 파일 첨부하는 방법 -->
+        <a href="{% get_media_prefix %}{{ file }}">{{ file.filename }}</a>
+    {% endfor %}</p>
+
 </div>
 {% endblock %}
